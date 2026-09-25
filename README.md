@@ -13,7 +13,8 @@ A PySide6 GUI app for learning 28 European alphabets, featuring progress trackin
 
 * **Letter input:** Enter the required character in the input field.
   * Uppercase and lowercase letters are treated equally.
-  * Visually similar characters from different alphabets are accepted as alternative input.
+  * Leading and trailing spaces are ignored after submitting the input.
+  * Equivalent characters with different Unicode representations are accepted to accommodate different keyboard layouts.
 
 * **Progress tracking:** Shows the number of completed letters and overall progress.
 * **Timer:** Tracks the time spent completing the selected alphabet.
@@ -23,11 +24,8 @@ A PySide6 GUI app for learning 28 European alphabets, featuring progress trackin
 
 ## Screenshots
 
-### Main Window
-![ABC Learner main window](screenshots/abc_learner_main_window.png)
-
-### Progress Tracking
-![ABC Learner progress tracking](screenshots/abc_learner_progress.png)
-
-### Completion
-![ABC Learner completion window](screenshots/abc_learner_completion_window.png)
+<p align="center">
+  <img src="screenshots/abc_learner_main_window.png" width="30%">
+  <img src="screenshots/abc_learner_progress.png" width="30%">
+  <img src="screenshots/abc_learner_completion_window.png" width="30%">
+</p>
