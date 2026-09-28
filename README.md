@@ -43,10 +43,10 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-Run the application:
+Run the application from source:
 ```bash
 python abc_learner.py
 ```
 
-## Download
+## Pre-built executable:
 [ABC Learner.exe](https://github.com/rolandmorgan-dev/abc-learner-eu28/releases/download/1.0.0/ABC.Learner.exe)
