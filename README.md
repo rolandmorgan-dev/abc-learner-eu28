@@ -47,3 +47,7 @@ Run the application:
 ```bash
 python abc_learner.py
 ```
+
+## Download the latest exe file:
+
+[Download ABC Learner](../../releases/latest)
