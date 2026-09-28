@@ -376,15 +376,8 @@ class Celebration:
         # Sound
         # -------------------------
 
-        sounds_folder = (
-            Path(__file__).resolve().parent
-            / "sounds"
-        )
-
-        fireworks_path = (
-            sounds_folder
-            / "fireworks.mp3"
-        )
+        sounds_folder = BASE_DIR / "sounds"
+        fireworks_path = sounds_folder / "fireworks.mp3"
 
         self.audio_output = QAudioOutput()
 
