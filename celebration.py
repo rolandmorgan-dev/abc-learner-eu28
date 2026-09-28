@@ -5,19 +5,14 @@ from pathlib import Path
 from PySide6.QtCore import QPointF, QTimer, Qt, QUrl
 from PySide6.QtGui import QColor, QPainter, QPen
 from PySide6.QtMultimedia import QAudioOutput, QMediaPlayer
-from PySide6.QtWidgets import (
-    QDialog,
-    QDialogButtonBox,
-    QLabel,
-    QVBoxLayout,
-    QWidget,
-)
+from PySide6.QtWidgets import (QDialog, QDialogButtonBox, QLabel, QVBoxLayout, QWidget)
 
+# Base directory for application files
+BASE_DIR = Path(__file__).resolve().parent
 
 # =========================
 # Particle
 # =========================
-
 class Particle:
     def __init__(self, x, y, angle, speed, color):
         self.x = x
