@@ -1,4 +1,3 @@
-### Expandable abc checker ###
 import sys
 import time
 from PySide6.QtCore import Qt, QTimer
@@ -6,7 +5,7 @@ from PySide6.QtWidgets import (QApplication, QLabel, QPushButton, QHBoxLayout, Q
                                QWidget, QStyle, QLineEdit, QComboBox, QProgressBar)
 from celebration import Celebration
 
-### ABC language packs ###
+### Alphabet data ###
 abc_lists = (
     ("aut", "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Ä, Ö, Ü, ẞ"),
     ("bel", "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z"),
@@ -38,7 +37,7 @@ abc_lists = (
     ("swe", "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Å, Ä, Ö"),
     )
 
-# Visually similar characters accepted as alternative input
+# Visually similar characters with different Unicode representations accepted as alternative input
 letter_matches = {
     "A": ("А", "Α"), "А": ("A", "Α"), "Α": ("А", "A"),
     "B": ("В", "Β"), "В": ("B", "Β"), "Β": ("В", "B"),
@@ -275,7 +274,7 @@ class abc_gui(QWidget):
                                 }                        
                             """)
 
-        # ABC langs dictionary, contains each abc list called by it's lang abbreviation [0]
+        # Convert alphabet data to lowercase character tuples
         self.abc_langs = tuple(tuple(char.strip().lower() for char in abc[1].split(",")) for abc in abc_lists)
 
         self.abc = self.abc_langs[8]
@@ -304,7 +303,7 @@ class abc_gui(QWidget):
         self.main_layout.addLayout(self.layout_results)
         self.main_layout.addStretch()
 
-        # ABC choice (push buttons)
+        # Alphabet and interface language selection
         self.select_abc = QComboBox(self)
         self.select_abc.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.select_abc.addItems((abc for abc in self.curr_lang["alphabets"]))
@@ -323,7 +322,7 @@ class abc_gui(QWidget):
         self.top_toolbar.addStretch()
         self.top_toolbar.addWidget(self.select_lang)
 
-        # Input (line edit) & information labels
+        # Input field and information labels
         self.user_place = QLabel()
         self.user_place.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.user_progress_bar = QProgressBar()
@@ -390,7 +389,7 @@ class abc_gui(QWidget):
         self.layout_results.addWidget(self.user_input_check)
         self.layout_results.addStretch()
         
-        # Connectors
+        # Signal connections
         self.select_abc.currentIndexChanged.connect(self.change_abc)
         self.select_lang.currentIndexChanged.connect(self.change_language)
         self.user_input_reset.pressed.connect(lambda: self.buttons_pressed_fix(0, self.user_input_reset))
@@ -399,18 +398,18 @@ class abc_gui(QWidget):
         self.hint_button.pressed.connect(lambda: self.buttons_pressed_fix(2, self.hint_button))
         self.reset()
 
-    # Current alphabeth position
+    # Current alphabet position
     @property
     def curr_pos(self):
         return self._curr_pos
     
-    # Updates user progress bar
+    # Update the progress bar
     @curr_pos.setter
     def curr_pos(self, value):
         self._curr_pos = value
         self.user_progress()
 
-    # Fix "user_input" and "hint" [pressed] event overlap
+    # Prevent overlap between input and hint button press events
     def buttons_pressed_fix(self, idx, button):
         self.button_pressed(button)
         if idx == 1:
@@ -420,12 +419,12 @@ class abc_gui(QWidget):
         else:
             self.reset()
 
-    # Creates a brief pressed effect on the button
+    # Create a brief pressed effect on the button
     def button_pressed(self, button):
         button.setStyleSheet("margin: 3px; padding-top: 2px; padding-left: 2px;")
         QTimer.singleShot(40, lambda: button.setStyleSheet(""))
     
-    # Shows the correct next letter when the hint is triggered. (help func)
+    # Show the next letter when the hint is triggered
     def hint_button_pressed(self):
         self.user_input.setFocus()
         if self.curr_pos >= len(self.abc):
@@ -437,7 +436,7 @@ class abc_gui(QWidget):
         self.errors += 1
         self.user_errors.setText(f"{self.curr_lang["errors"]}{self.errors}")
     
-    # Progress bar progress update
+    # Update the progress bar
     def user_progress(self):
         curr_percent = int(self.curr_pos / len(self.abc) * 100)
         self.user_progress_bar.setValue(curr_percent)
@@ -452,13 +451,13 @@ class abc_gui(QWidget):
         if stop:
             self.timer.stop()
 
-    # Updates time elapsed
+    # Update elapsed time
     def update_time(self):
         elapsed = int(time.time() - self.time)
         self.show_elapsed = f"{elapsed // 60:02d}:{elapsed % 60:02d}" 
         self.user_progress_bar.setFormat(self.show_elapsed)
 
-    # [Enter] function #
+    # [Enter] function
     def check_char(self, char):
         self.user_input.setFocus()
         if self.curr_pos >= len(self.abc):
@@ -478,7 +477,7 @@ class abc_gui(QWidget):
                 self.user_progress_timer(1)
                 self.is_timer_on = 0
                 self.user_input.setText("")
-                # Celebration Dialog Box
+                # Celebration dialog box
                 total_letters = f"{self.curr_lang["total_letters"]}{self.curr_pos}/{len(self.abc)}"
                 elapsed_time = f"{self.curr_lang["time"]}{self.show_elapsed}"
                 errors = f"{self.curr_lang["errors"]}{self.errors}"
@@ -500,7 +499,7 @@ class abc_gui(QWidget):
         self.is_timer_on = 1
         self.user_input.setText("")
 
-    # [Reset] function #
+    # [Reset] function
     def reset(self):
         self.user_progress_timer(1)
         self.user_progress_bar.setFormat("00:00")
@@ -514,18 +513,18 @@ class abc_gui(QWidget):
         self.user_input.setText("")
         self.user_input.setFocus()
 
-    # Connects self.select_lang - switch ui language to the selected language #
+    # Switch the interface language
     def change_language(self, index):
         selected_language = ("English", "Deutsch", "Français", "Magyar")[index]
         self.curr_lang = language_packs[selected_language]
-        # abc list localization
+        # Localize alphabet list
         self.select_abc.blockSignals(True)
         abc_idx = self.select_abc.currentIndex()
         self.select_abc.clear()
         self.select_abc.addItems((abc for abc in self.curr_lang["alphabets"]))
         self.select_abc.setCurrentIndex(abc_idx)
         self.select_abc.blockSignals(False)
-        # user interface localization
+        # Localize user interface
         self.user_place.setText(f"{self.curr_pos}/{len(self.abc)}")
         self.user_prev_char.setText(f"{self.curr_lang["prev_char"]}{self.char}")
         self.user_errors.setText(f"{self.curr_lang["errors"]}{self.errors}")
@@ -534,7 +533,7 @@ class abc_gui(QWidget):
         self.hint_button.setText(f"{self.curr_lang["hint"]}")
         self.hint_button.setToolTip(f"{self.curr_lang["hint_tooltip"]}")
 
-    # Set alphabets #
+    # Change alphabet
     def change_abc(self, index):
         self.abc = self.abc_langs[index]
         self.reset()
