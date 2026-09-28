@@ -93,7 +93,7 @@ class Fireworks(QWidget):
         )
         self.animation_timer.start(16)
 
-        # fireworks spawning
+        # Fireworks spawning
         self.spawn_timer = QTimer(self)
         self.spawn_timer.timeout.connect(
             self.launch_fireworks
