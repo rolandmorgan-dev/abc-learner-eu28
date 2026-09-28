@@ -63,7 +63,7 @@ language_packs = {
         "errors": "Errors: ",
         "prev_char": "Previous character: ",
         "hint": "Hint",
-        "hint_tooltip": "Shows the next letter as a hint.",
+        "hint_tooltip": "Shows the next letter as a hint. (Counts as 1 error.)",
         "reset": "Reset",
         "enter": "Enter",
         "total_letters": "Total Letters: ",
