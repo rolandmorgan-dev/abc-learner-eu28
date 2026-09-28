@@ -48,6 +48,5 @@ Run the application:
 python abc_learner.py
 ```
 
-## Download the latest exe file:
-
-[Download ABC Learner](../../releases/latest)
+## Download:
+[Download ABC Learner.exe]([../../releases/latest](https://github.com/rolandmorgan-dev/abc-learner-eu28/releases/download/1.0.0/ABC.Learner.exe))
