@@ -49,4 +49,4 @@ python abc_learner.py
 ```
 
 ## Download
-[ABC Learner.exe]([../../releases/latest](https://github.com/rolandmorgan-dev/abc-learner-eu28/releases/download/1.0.0/ABC.Learner.exe))
+[ABC Learner.exe](https://github.com/rolandmorgan-dev/abc-learner-eu28/releases/download/1.0.0/ABC.Learner.exe)
