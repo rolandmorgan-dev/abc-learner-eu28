@@ -44,6 +44,6 @@ pip install -r requirements.txt
 
 ## Usage
 Run the application:
-'''bash
+```bash
 python abc_learner.py
-'''
+```
