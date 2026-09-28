@@ -56,7 +56,6 @@ class Particle:
 # =========================
 # Fireworks
 # =========================
-
 class Fireworks(QWidget):
     def __init__(self):
         super().__init__()
@@ -240,7 +239,6 @@ class Fireworks(QWidget):
 # =========================
 # Result dialog
 # =========================
-
 class ResultDialog(QDialog):
     def __init__(
         self,
@@ -347,7 +345,6 @@ class ResultDialog(QDialog):
 # =========================
 # Celebration
 # =========================
-
 class Celebration:
     def __init__(
         self,
@@ -369,13 +366,11 @@ class Celebration:
         # -------------------------
         # Fireworks
         # -------------------------
-
         self.fireworks = Fireworks()
 
         # -------------------------
         # Sound
         # -------------------------
-
         sounds_folder = BASE_DIR / "sounds"
         fireworks_path = sounds_folder / "fireworks.mp3"
 
@@ -405,7 +400,6 @@ class Celebration:
         # -------------------------
         # Show
         # -------------------------
-
         self.fireworks.showFullScreen()
         self.fireworks.raise_()
         self.fireworks.activateWindow()
