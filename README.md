@@ -32,7 +32,7 @@ A PySide6 GUI app for learning 28 European alphabets, featuring progress trackin
 
 ## Requirements
 
-- Python 3.14.3
+- Python 3.14+
 - PySide6 6.10.2
 
 ## Installation
@@ -43,4 +43,7 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-Run the application: python abc_learner.py
+Run the application:
+'''bash
+python abc_learner.py
+'''
