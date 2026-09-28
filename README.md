@@ -48,5 +48,5 @@ Run the application from source:
 python abc_learner.py
 ```
 
-## Pre-built executable:
+## Pre-built executable
 [ABC Learner.exe](https://github.com/rolandmorgan-dev/abc-learner-eu28/releases/download/1.0.0/ABC.Learner.exe)
