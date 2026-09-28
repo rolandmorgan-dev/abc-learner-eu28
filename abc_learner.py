@@ -1,5 +1,6 @@
 import sys
 import time
+from PySide6.QtGui import QIcon
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtWidgets import (QApplication, QLabel, QPushButton, QHBoxLayout, QVBoxLayout,
                                QWidget, QStyle, QLineEdit, QComboBox, QProgressBar)
@@ -236,7 +237,7 @@ class abc_gui(QWidget):
         self.setWindowTitle("ABC Learner")
         self.setFixedSize(400, 400)
         self.setWindowFlags(self.windowFlags() | Qt.WindowType.MSWindowsFixedSizeDialogHint)
-        self.setWindowIcon(self.style().standardIcon(QStyle.SP_MessageBoxInformation))
+        self.setWindowIcon(QIcon("abc.ico"))
         self.setStyleSheet("""
                             QWidget {
                                 background: qlineargradient(x1:0,y1:0,x2:1,y2:1, stop:0 #0f172a, stop:1 #071029);
