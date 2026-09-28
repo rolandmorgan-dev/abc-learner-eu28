@@ -236,7 +236,7 @@ class abc_gui(QWidget):
         self.setWindowTitle("ABC Learner")
         self.setFixedSize(400, 400)
         self.setWindowFlags(self.windowFlags() | Qt.WindowType.MSWindowsFixedSizeDialogHint)
-        self.setWindowIcon(QIcon(BASE_DIR / "abc.ico"))
+        self.setWindowIcon(QIcon(str(BASE_DIR / "abc.ico")))
         self.setStyleSheet("""
                             QWidget {
                                 background: qlineargradient(x1:0,y1:0,x2:1,y2:1, stop:0 #0f172a, stop:1 #071029);
