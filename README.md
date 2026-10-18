@@ -46,7 +46,7 @@ pip install -r requirements.txt
 ## Usage
 Run the application from source:
 ```bash
-python abc_learner.py
+python abc_learner.pyw
 ```
 
 ## Pre-built executable
